@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taha - SOHOH</title>
+    <title>Vanuatu - SOHOH</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -32,14 +32,16 @@
     <main class="product-page">
         <!-- Left Side (60% of the screen) -->
         <div class="product-images">
-            <img src="images/BB3_1.jpg" alt="Product 1 - BB3_1">
-            <img src="images/Vairaumati.jpg" alt="Product 1 - Vairaumati">
-            <img src="images/BB3_2.jpg" alt="Product 1 - BB3_2">
+            <img src="images/Vanuatu_1.jpg" alt="Product 1 - BB3_1">
+            <img src="images/Vanuatu_3.jpg" alt="Product 1 - BB3_2">
+            <img src="images/Vanuatu_2.jpg" alt="Product 1 - BB3_2">
+            <img src="images/Vanuatu_4.jpg" alt="Product 1 - BB3_2">
+            <img src="images/Vanuatu_5.jpg" alt="Product 1 - Vairaumati">
         </div>
 
         <!-- Right Side (40% of the screen) -->
         <div class="product-page-details">
-            <h1>Taha</h1>
+            <h1>Vanuatu</h1>
             <h2>Paréo en soie fine</h2>
             <p class="price">$250</p>
             <p class="description">
@@ -50,6 +52,25 @@
             </a>
         </div>
     </main>
+    <!-- Pop-up Modal -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Votre Panier</h2>
+            <div id="modal-cart-items">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="modal-summary">
+                <p>Sous-total: <span id="modal-subtotal">$0</span></p>
+                <p>Livraison: <span id="modal-delivery-fee">Gratuite</span></p>
+                <p class="total">Total: <span id="modal-total">$0</span></p>
+            </div>
+            <div class="modal-actions">
+                <a href="panier.html" class="btn">Voir le Panier</a>
+                <a href="#" class="btn">Passer la Commande</a>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer Section -->
     <footer>

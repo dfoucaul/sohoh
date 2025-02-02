@@ -5,11 +5,18 @@ body, h1, p, ul, li, a {
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Futura', Arial, sans-serif;
-    line-height: 1.6;
+@font-face {
+    font-family: 'Twentieth Century';
+    src: url('fonts/TwCenMTStdSemiMedium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
 }
 
+body {
+    font-family: 'Twentieth Century', 'Comic Sans MS', sans-serif;
+    line-height: 1.6;
+    font-feature-settings: "kern" 1;
+}
 
 /* Header Styles */
 header {
@@ -46,11 +53,12 @@ nav {
 .nav-links li a, .nav-links-right li a {
     text-decoration: none;
     color: #000;
-    font-size: 0.9rem;
+    font-size: 1.0rem;
 }
 
 .nav-links li a:hover, .nav-links-right li a:hover {
-    text-decoration: underline;
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make it bold */
 }
 
 .nav-links-right {
@@ -59,7 +67,7 @@ nav {
 
 /* Hero Section Styles */
 .hero {
-    background-image: url('images/Paul_Gauguin_128.jpg');
+    background-image: url('images/Hana_5.jpg');
     background-size: cover;
     background-position: top;
     height: 150vh;
@@ -135,8 +143,10 @@ footer {
 }
 
 .footer-column ul li a:hover {
-    text-decoration: underline;
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make it bold */
 }
+
 /* Product Grid Styles */
 .product-grid {
     padding: 0px;
@@ -256,7 +266,15 @@ footer {
 .nav-links li a.active {
     color: #000000; /* Change to your preferred color */
     font-weight: bold; /* Make it bold */
-    text-decoration: underline; /* Add an underline */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make it bold */
+}
+
+.nav-links-right li a:active {
+    color: #000000; /* Change to your preferred color */
+    font-weight: bold; /* Make it bold */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make it bold */
 }
 
 /* Product Page Styles */
@@ -409,6 +427,7 @@ footer {
     grid-template-columns: 60% 40%;
     gap: 20px;
     padding: 20px;
+    background-color: #f8f8f8;
 }
 
 .cart-items {
@@ -437,7 +456,7 @@ footer {
 
 .cart-item img {
     width: 100px;
-    height: 100px;
+    height: 130px;
     object-fit: cover;
 }
 
@@ -551,4 +570,68 @@ footer {
 
 .cart-item-link:hover {
     opacity: 0.8;
+}
+
+/* Modal Cart Item Styles */
+.modal-cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.modal-item-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+.modal-item-details {
+    flex: 1;
+}
+
+.modal-item-details h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.modal-item-details p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Modal Cart Item Styles */
+.modal-cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.modal-item-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+.modal-item-details {
+    flex: 1;
+}
+
+.modal-item-details h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.modal-item-details p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
 }

@@ -4,28 +4,70 @@ document.addEventListener('DOMContentLoaded', function () {
     products.forEach((product, index) => {
         let images;
         switch (index) {
-            case 0: // Product 1
+            case 0: // Product 1 (Vanuatu)
                 images = [
-                    'images/BB3_1.jpg',
-                    'images/Vairaumati.jpg', // Second image for Product 1
-                    'images/BB3_1.jpg', // Third image for Product 1
+                    'images/Vanuatu_1.jpg',
+                    'images/Vanuatu_5.jpg', // Second image for Product 1
+                    'images/Vanuatu_3.jpg', // Third image for Product 1
                 ];
                 break;
-            case 1: // Product 3
+            case 1: // Product 2 (Tehura)
                 images = [
-                    'images/BB4_1.jpg',
-                    'images/lasieste.jpg', // Second image for Product 3
-                    'images/BB4_1.jpg', // Third image for Product 3
+                    'images/Tehura_1.jpg',
+                    'images/Tehura_4.jpg', // Second image for Product 2
+                    'images/Tehura_3.jpg', // Third image for Product 2
                 ];
                 break;
-            case 2: // Product 4
+            case 2: // Product 3 (Bora)
                 images = [
-                    'images/BB6_1.jpg',
-                    'images/teaa.jpg', // Second image for Product 4
-                    'images/BB6_1.jpg', // Third image for Product 4
+                    'images/Bora_1.jpg',
+                    'images/Bora_4.jpg', // Second image for Product 3
+                    'images/Bora_2.jpg', // Third image for Product 3
                 ];
                 break;
-            default: // Other products
+            case 3: // Product 4 (Nadi)
+                images = [
+                    'images/Nadi_1.jpg',
+                    'images/Nadi_4.jpg', // Second image for Product 4
+                    'images/Nadi_2.jpg', // Third image for Product 4
+                ];
+                break;
+            case 4: // Product 5 (Vairaumati)
+                images = [
+                    'images/Nivano_1.jpg',
+                    'images/Nivano_5.jpg', // Second image for Product 5
+                    'images/Nivano_3.jpg', // Third image for Product 5
+                ];
+                break;
+            case 5: // Product 6 (Ribauchet)
+                images = [
+                    'images/Hana_1.jpg',
+                    'images/Hana_5.jpg', // Second image for Product 6
+                    'images/Hana_3.jpg', // Third image for Product 6
+                ];
+                break;
+            case 6: // Product 7 (Hana)
+                images = [
+                    'images/Moorea_1.jpg',
+                    'images/Moorea_2.jpg', // Second image for Product 7
+                    'images/.jpg', // Third image for Product 7
+                ];
+                break;
+            case 7: // Product 8 (Moorea)
+                images = [
+                    'images/Manua_1.jpg',
+                    'images/Manua_4.jpg', // Second image for Product 8
+                    'images/Manua_2.jpg', // Third image for Product 8
+                ];
+                break;
+            case 8: // Product 9 (Manua)
+                images = [
+                    'images/Manua_1.jpg',
+                    'images/Manua_4.jpg', // Second image for Product 9
+                    'images/Manua_2.jpg', // Third image for Product 9
+                ];
+                break;
+            default: // Other products (if any)
                 images = [
                     product.querySelector('img').src,
                     'images/default2.jpg', // Replace with your default second image
@@ -193,3 +235,65 @@ document.addEventListener('DOMContentLoaded', function () {
     displayCartItems();
 });
 
+// Get the modal and buttons
+const modal = document.getElementById('cart-modal');
+const addToCartBtn = document.getElementById('add-to-cart-btn');
+const closeModal = document.querySelector('.close-modal');
+const modalCartItems = document.getElementById('modal-cart-items');
+const modalSubtotal = document.getElementById('modal-subtotal');
+const modalTotal = document.getElementById('modal-total');
+
+// Function to open the modal
+function openModal() {
+    modal.style.display = 'flex';
+    updateModalCart();
+}
+
+// Function to close the modal
+function closeModalHandler() {
+    modal.style.display = 'none';
+}
+
+// Event listeners
+addToCartBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    openModal();
+});
+
+closeModal.addEventListener('click', closeModalHandler);
+
+// Close modal when clicking outside the modal content
+window.addEventListener('click', function (e) {
+    if (e.target === modal) {
+        closeModalHandler();
+    }
+});
+
+// Function to update the modal cart content
+function updateModalCart() {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    modalCartItems.innerHTML = ''; // Clear existing items
+
+    let subtotal = 0;
+
+    cartItems.forEach((item, index) => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('modal-cart-item');
+
+        cartItem.innerHTML = `
+            <img src="${item.image}" alt="${item.name}" class="modal-item-image">
+            <div class="modal-item-details">
+                <h3>${item.name}</h3>
+                <p>Prix: $${item.price}</p>
+                <p>Quantité: ${item.quantity}</p>
+            </div>
+        `;
+
+        modalCartItems.appendChild(cartItem);
+        subtotal += item.price * item.quantity;
+    });
+
+    // Update subtotal and total
+    modalSubtotal.textContent = `$${subtotal}`;
+    modalTotal.textContent = `$${subtotal}`; // Assuming delivery is free
+}
